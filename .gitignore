@@ -1,0 +1,22 @@
+# Ignore build artifacts
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.dSYM/
+
+# Ignore test binaries
+tests/test_program
+tests/*.out
+
+# Ignore editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+
+# Ignore backup files
+*~
