@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Image *loadBMP(const char *filename)
+BMPImage *load_bmp(const char *filename)
 {
     FILE *file = fopen(filename, "rb");
     if (!file)
@@ -42,7 +42,7 @@ Image *loadBMP(const char *filename)
     int height = *(int *)&dibHeader.height;
 
     // allocate memory for the image
-    Image *img = (Image *)malloc(sizeof(Image));
+    BMPImage *img = (BMPImage *)malloc(sizeof(BMPImage));
     img->width = dibHeader.width;
     img->height = dibHeader.height;
     img->data = (Pixel *)malloc(width * height * sizeof(Pixel));
@@ -105,7 +105,7 @@ Image *loadBMP(const char *filename)
     return img;
 }
 
-void saveBMP(const char *filename, const Image *img, uint16_t bitCount)
+void save_bmp(const char *filename, const BMPImage *img, uint16_t bitCount)
 {
     FILE *file = fopen(filename, "wb");
     if (!file)
@@ -178,7 +178,7 @@ void saveBMP(const char *filename, const Image *img, uint16_t bitCount)
     fclose(file);
 }
 
-void freeImage(Image *img)
+void free_image(BMPImage *img)
 {
     if (img)
     {

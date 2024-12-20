@@ -1,7 +1,7 @@
 #include "../include/structs.h"
 
 // flip vertical function:
-void vertical_flip(Image *img)
+void vertical_flip(BMPImage *img)
 {
     if (!img || !img->data)
     {
@@ -32,7 +32,7 @@ void vertical_flip(Image *img)
 }
 
 // flip horizontal function:
-void horizontal_flip(Image *img)
+void horizontal_flip(BMPImage *img)
 {
     if (!img || !img->data)
     {
@@ -64,7 +64,7 @@ void horizontal_flip(Image *img)
 }
 
 // flip a region vertically
-void regional_vertical_flip(Image *img, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
+void regional_vertical_flip(BMPImage *img, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 {
     if (!img || !img->data || x1 >= x2 || y1 >= y2 || x2 > img->width || y2 > img->height)
     {
@@ -87,7 +87,7 @@ void regional_vertical_flip(Image *img, uint16_t x1, uint16_t y1, uint16_t x2, u
 }
 
 // flip a region horizontally
-void regional_horizontal_flip(Image *img, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
+void regional_horizontal_flip(BMPImage *img, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 {
     if (!img || !img->data || x1 >= x2 || y1 >= y2 || x2 > img->width || y2 > img->height)
     {

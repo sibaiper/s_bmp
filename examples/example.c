@@ -6,20 +6,46 @@
 int main()
 {
 
-    Image *img = loadBMP("bird.bmp");
+    BMPImage *img = load_bmp("bird.bmp");
     if (!img)
     {
         printf("Failed to load image\n");
         return 1;
     }
 
-    grayscaleImage(img);
     
     //flip regionally:
     regional_horizontal_flip(img, 25, 25, 200, 200);
     
-    saveBMP("output.bmp", img, 24);
-    freeImage(img);
+    //invert the image colors:
+    //invert_image(img);
+
+    //sepia the image:
+    // sepia_image(img);
+
+    
+    //blur the image (gaussian blur): kernel_size between 3 and 15? 
+    // gaussian_blur(img, 3, 1.5);
+    // gaussian_blur(img, 7, 10.5);
+
+
+    //brightness the image:
+    // brightness(img, -10);
+
+
+    //simple 1 specific color replacement (oldColor, newColor):
+    // replace_color_simple(img, (Color){255, 255, 255}, (Color){0, 0, 0});
+
+
+    //complex replace color with threshold:
+    replace_similar_colors(img, (Pixel){35,66,17}, (Pixel){0, 0, 0}, 50);
+
+
+    //save the image:
+    save_bmp("output.bmp", img, 24);
+    
+    //cleanup:
+    free_image(img);
 
     printf("Image processed successfully!\n");
     return 0;

@@ -14,7 +14,7 @@ $(LIB_NAME): $(OBJ)
 	@ar rcs $@ $^
 
 examples: $(LIB_NAME)
-	@$(CC) $(CFLAGS) -o example examples/example.c -L. -lbmp
+	@$(CC) $(CFLAGS) -o example examples/example.c -L. -lbmp -lm
 
 clean:
 	@rm -f $(OBJ) $(LIB_NAME) example

@@ -38,10 +38,17 @@ typedef struct
 
 typedef struct
 {
+  uint8_t r;
+  uint8_t g;
+  uint8_t b;
+} Color;
+
+typedef struct
+{
   int width;
   int height;
   Pixel *data; // Array of pixels
-} Image;
+} BMPImage;
 
 struct RGBQuad
 {
