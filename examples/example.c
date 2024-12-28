@@ -38,8 +38,20 @@ int main()
 
 
     //complex replace color with threshold:
-    replace_similar_colors(img, (Pixel){35,66,17}, (Pixel){0, 0, 0}, 50);
+    //replace_similar_colors(img, (Pixel){35,66,17}, (Pixel){0, 0, 0}, 50);
 
+    
+    //contrast
+    // contrast(img, 1.1f);
+
+    //gamma correctio
+    // gamma_correction(img, 1.1f);
+
+    //pixelate the image:
+    // pixelate(img, 20);
+
+    //box blur
+    box_blur(img, 20);
 
     //save the image:
     save_bmp("output.bmp", img, 24);

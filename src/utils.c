@@ -1,4 +1,5 @@
 #include "../include/structs.h"
+#include <math.h>
 
 int int_clamp(int value, int min, int max)
 {
@@ -109,3 +110,49 @@ void brightness(BMPImage *img, int value)
     }
 }
 
+void contrast(BMPImage *img, float value)
+{
+    if (!img || !img->data)
+    {
+        return; // handle null pointer
+    }
+
+    // loop through all pixels in the image
+    for (int y = 0; y < img->height; y++)
+    {
+        for (int x = 0; x < img->width; x++)
+        {
+            Pixel *pixel = &img->data[y * img->width + x]; // access pixel
+
+
+            //calculate the new RGB values using the formula:
+            //new_value = (value * (old_value - 128)) + 128
+            pixel->r = int_clamp((value * (pixel->r - 128 )) + 128, 0, 255);
+            pixel->g = int_clamp((value * (pixel->g - 128 )) + 128, 0, 255);
+            pixel->b = int_clamp((value * (pixel->b - 128 )) + 128, 0, 255);
+        }
+    }
+}
+
+void gamma_correction(BMPImage *img, float value)
+{
+    if (!img || !img->data)
+    {
+        return; // handle null pointer
+    }
+
+    // loop through all pixels in the image
+    for (int y = 0; y < img->height; y++)
+    {
+        for (int x = 0; x < img->width; x++)
+        {
+            Pixel *pixel = &img->data[y * img->width + x]; // access pixel
+
+            // calculate the new RGB values using the formula:
+            // new_value = 255 * pow(old_value / 255, 1 / value)
+            pixel->r = int_clamp(255 * pow(pixel->r / 255.0, 1 / value), 0, 255);
+            pixel->g = int_clamp(255 * pow(pixel->g / 255.0, 1 / value), 0, 255);
+            pixel->b = int_clamp(255 * pow(pixel->b / 255.0, 1 / value), 0, 255);
+        }
+    }
+}

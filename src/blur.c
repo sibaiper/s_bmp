@@ -97,3 +97,50 @@ void gaussian_blur(BMPImage *img, int kernel_size, float sigma)
     }
     free(kernel);
 }
+
+
+void box_blur(BMPImage *img, int pixel_size)
+{
+    if (!img || !img->data)
+    {
+        return; // handle null pointer
+    }
+
+    // loop through all pixels in the image
+    for (int y = 0; y < img->height; y++)
+    {
+        for (int x = 0; x < img->width; x++)
+        {
+            Pixel *pixel = &img->data[y * img->width + x]; // access pixel
+            
+            // average value of the pixel:
+            int r = 0, g = 0, b = 0;
+            int count = 0;
+            for (int j = 0; j < pixel_size; j++)
+            {
+                for (int i = 0; i < pixel_size; i++)
+                {
+                    int x2 = x + i;
+                    int y2 = y + j;
+                    if (x2 < img->width && y2 < img->height)
+                    {
+                        Pixel *p = &img->data[y2 * img->width + x2];
+                        r += p->r;
+                        g += p->g;
+                        b += p->b;
+                        count++;
+                    }
+                }
+            }
+            r /= count;
+            g /= count;
+            b /= count;
+
+            // set the pixel to the average value
+            pixel->r = r;
+            pixel->g = g;
+            pixel->b = b;
+
+        }
+    }
+}

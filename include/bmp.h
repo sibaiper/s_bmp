@@ -17,11 +17,14 @@ void sepia_image(BMPImage *img);
 void invert_image(BMPImage *img);
 float **create_gaussian_kernel(int size, float sigma);
 void gaussian_blur(BMPImage *img, int kernel_size, float sigma);
+void box_blur(BMPImage *img, int pixel_size);
 void int_clamp(int value, int min, int max);
 void brightness(BMPImage *img, int value);
 void replace_color_simple(BMPImage *img, Color oldColor, Color newColor);
 int color_distance_squared(Pixel c1, Pixel c2);
 void replace_similar_colors(BMPImage *img, Pixel oldColor, Pixel newColor, int threshold);
-
+void contrast(BMPImage *img, float value);
+void gamma_correction(BMPImage *img, float value);
+void pixelate(BMPImage *img, int pixel_size);
 
 #endif // BMP_H
