@@ -51,7 +51,10 @@ int main()
     // pixelate(img, 20);
 
     //box blur
-    box_blur(img, 20);
+    // box_blur(img, 20);
+
+    //sharpen the image:
+    // sharpen(img, 1);
 
     //save the image:
     save_bmp("output.bmp", img, 24);

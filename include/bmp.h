@@ -26,5 +26,6 @@ void replace_similar_colors(BMPImage *img, Pixel oldColor, Pixel newColor, int t
 void contrast(BMPImage *img, float value);
 void gamma_correction(BMPImage *img, float value);
 void pixelate(BMPImage *img, int pixel_size);
+void sharpen(BMPImage *image, int strength);
 
 #endif // BMP_H
